@@ -5,19 +5,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.bruno.challenge.api.entities.Product;
 import br.com.bruno.challenge.api.entities.ProductCategory;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
 public class ProductRepositoryTest {
@@ -32,7 +29,7 @@ public class ProductRepositoryTest {
 	private static final String NAMEPRODUCT = "Produto 1";
 	private static final String DESCRIPTION = "Descrição";
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		ProductCategory productCategory = this.productCategoryRepository.save(getProductCategoryData());
 
@@ -41,7 +38,7 @@ public class ProductRepositoryTest {
 		this.productRepository.save(product);
 	}
 
-	@After
+	@AfterEach
 	public final void tearDown() {
 		this.productRepository.deleteAll();
 		this.productCategoryRepository.deleteAll();

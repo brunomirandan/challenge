@@ -2,18 +2,15 @@ package br.com.bruno.challenge.api.repositories;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.bruno.challenge.api.entities.ProductCategory;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
 public class ProductCategoryRepositoryTest {
@@ -23,14 +20,14 @@ public class ProductCategoryRepositoryTest {
 
 	private static final String NAME = "Categoria 1";
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		ProductCategory productCategory = new ProductCategory();
 		productCategory.setName(NAME);
 		this.productCategoryRepository.save(productCategory);
 	}
 
-	@After
+	@AfterEach
 	public final void tearDown() {
 		this.productCategoryRepository.deleteAll();
 	}
@@ -41,5 +38,5 @@ public class ProductCategoryRepositoryTest {
 
 		assertEquals(NAME, productCategory.getName());
 	}
-	
+
 }

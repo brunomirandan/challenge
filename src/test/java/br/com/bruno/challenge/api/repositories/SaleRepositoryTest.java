@@ -5,14 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.bruno.challenge.api.entities.Buyer;
 import br.com.bruno.challenge.api.entities.Product;
@@ -20,7 +18,6 @@ import br.com.bruno.challenge.api.entities.ProductCategory;
 import br.com.bruno.challenge.api.entities.Sale;
 import br.com.bruno.challenge.api.entities.Salesman;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
 public class SaleRepositoryTest {
@@ -46,7 +43,7 @@ public class SaleRepositoryTest {
 	private static final String PRODUCTNAME = "Produto A";
 	private static final String DESCRIPTIONPRODUCT = "Descrição A";
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		Salesman salesman = this.salesmanRepository.save(getSalesmanData());
 
@@ -63,7 +60,7 @@ public class SaleRepositoryTest {
 		this.saleRepository.save(sale);
 	}
 
-	@After
+	@AfterEach
 	public final void tearDown() {
 		this.saleRepository.deleteAll();
 		this.salesmanRepository.deleteAll();
