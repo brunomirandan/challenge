@@ -3,9 +3,11 @@ package br.com.bruno.challenge.api.entities;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,14 +31,17 @@ public class Sale implements Serializable {
 		return id;
 	}
 
+	@ManyToOne(fetch = FetchType.EAGER)
 	public Salesman getSalesman() {
 		return salesman;
 	}
 
+	@ManyToOne(fetch = FetchType.EAGER)
 	public Buyer getBuyer() {
 		return buyer;
 	}
 
+	@ManyToOne(fetch = FetchType.EAGER)
 	public Product getProduct() {
 		return product;
 	}
